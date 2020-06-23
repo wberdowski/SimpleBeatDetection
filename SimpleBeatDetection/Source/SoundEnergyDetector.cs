@@ -29,11 +29,13 @@ namespace SimpleBeatDetection
             energyBuffer.Add(energy);
 
             // Detect beat
-            if (CheckBeatWidth(MinBeatWidth) && DateTime.Now.Subtract(LastBeatTime).TotalMilliseconds >= MinBeatGap)
+            if (CheckBeatWidth(MinBeatWidth) &&
+                (DateTime.Now.Subtract(LastBeatTime).TotalMilliseconds >= MinBeatGap) &&
+                energy > BeatThreshold)
             {
                 LastBeatTime = DateTime.Now;
                 OnBeatDetected();
-                beatBuffer.Add(1);
+                beatBuffer.Add(energy);
             }
             else
             {

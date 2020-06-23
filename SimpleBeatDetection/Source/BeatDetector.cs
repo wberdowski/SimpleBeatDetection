@@ -5,6 +5,11 @@ namespace SimpleBeatDetection
     public abstract class BeatDetector
     {
         /// <summary>
+        /// Beat detection threshold.
+        /// </summary>
+        public float BeatThreshold { get; set; } = 0.1f;
+
+        /// <summary>
         /// Minimal time between the detected beats in milliseconds.
         /// </summary>
         public int MinBeatGap { get; set; } = 400;

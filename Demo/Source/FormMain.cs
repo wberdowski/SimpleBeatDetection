@@ -26,6 +26,11 @@ namespace SimpleBeatDetection.Demo
             wasapi.Start();
 
             chart1.ChartAreas[0].AxisY.Maximum = 1;
+            chart1.ChartAreas[0].AxisX.Minimum = 0;
+            chart1.ChartAreas[0].AxisX.Maximum = detector.WindowSize;
+
+            chart1.Series[2].Points.AddXY(0, detector.BeatThreshold);
+            chart1.Series[2].Points.AddXY(detector.WindowSize, detector.BeatThreshold);
         }
 
         // Beat detected
