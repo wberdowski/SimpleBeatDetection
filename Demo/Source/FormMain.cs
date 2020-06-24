@@ -28,9 +28,6 @@ namespace SimpleBeatDetection.Demo
             chart1.ChartAreas[0].AxisY.Maximum = 1;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
             chart1.ChartAreas[0].AxisX.Maximum = detector.WindowSize;
-
-            chart1.Series[2].Points.AddXY(0, detector.BeatThreshold);
-            chart1.Series[2].Points.AddXY(detector.WindowSize, detector.BeatThreshold);
         }
 
         // Beat detected
@@ -64,11 +61,17 @@ namespace SimpleBeatDetection.Demo
                         chart1.Series[0].Points.Clear();
                         chart1.Series[1].Points.Clear();
 
+                        chart1.Series[2].Points.Clear();
+                        chart1.Series[2].Points.AddXY(0, detector.BeatThreshold);
+                        chart1.Series[2].Points.AddXY(detector.WindowSize, detector.BeatThreshold);
+
                         for (int i = 0; i < detector.energyBuffer.Count; i++)
                         {
                             chart1.Series[0].Points.Add(detector.energyBuffer[i]);
                             chart1.Series[1].Points.Add(detector.beatBuffer[i]);
                         }
+
+                        label1.Text = $"Gain: {detector.Gain:0.00}, Peak: {detector.Peak:0.00}";
                     }));
                 }
                 catch (ObjectDisposedException)

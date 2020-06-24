@@ -7,7 +7,7 @@ namespace SimpleBeatDetection
         /// <summary>
         /// Beat detection threshold.
         /// </summary>
-        public float BeatThreshold { get; set; } = 0.15f;
+        public float BeatThreshold { get; set; } = 0.3f;
 
         /// <summary>
         /// Minimal time between the detected beats in milliseconds.
@@ -23,6 +23,14 @@ namespace SimpleBeatDetection
         /// Width of the processing window;
         /// </summary>
         public int WindowSize { get; set; } = 50;
+
+        /// <summary>
+        /// Sets whether automatic gain control is enabled.
+        /// </summary>
+        public bool AutoGainEnabled { get; set; } = true;
+
+        public float Peak { get; set; } = 0;
+        public float Gain { get; set; } = 1;
 
         /// <summary>
         /// Time of the latest beat detection.

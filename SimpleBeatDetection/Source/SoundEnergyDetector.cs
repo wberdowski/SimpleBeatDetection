@@ -26,6 +26,19 @@ namespace SimpleBeatDetection
 
             energy /= samples.Length;
 
+            if (AutoGainEnabled)
+            {
+                if (energy > Peak)
+                {
+                    Peak = energy;
+                    Gain = 1 / Peak;
+                }
+
+                Peak *= 0.9999f;
+            }
+
+            energy *= Gain;
+
             energyBuffer.Add(energy);
 
             // Detect beat
