@@ -71,7 +71,7 @@ namespace SimpleBeatDetection.Demo
                             chart1.Series[1].Points.Add(detector.beatBuffer[i]);
                         }
 
-                        label1.Text = $"Gain: {detector.Gain:0.00}, Peak: {detector.Peak:0.00}";
+                        label1.Text = $"Gain: {detector.Gain:0.00}";
                     }));
                 }
                 catch (ObjectDisposedException)

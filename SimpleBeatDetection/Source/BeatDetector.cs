@@ -30,7 +30,7 @@ namespace SimpleBeatDetection
         public bool AutoGainEnabled { get; set; } = true;
 
         public float Peak { get; set; } = 0;
-        public float Gain { get; set; } = 1;
+        public float Gain { get; set; } = float.MaxValue;
 
         /// <summary>
         /// Time of the latest beat detection.

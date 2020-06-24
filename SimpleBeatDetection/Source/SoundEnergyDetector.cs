@@ -28,13 +28,14 @@ namespace SimpleBeatDetection
 
             if (AutoGainEnabled)
             {
-                if (energy > Peak)
+                if (energy * Gain > 1)
                 {
-                    Peak = energy;
-                    Gain = 1 / Peak;
+                    Gain = 1 / energy;
                 }
 
-                Peak *= 0.9999f;
+                Gain *= 1.0005f;
+
+                //Peak *= 1- 0.0005f;
             }
 
             energy *= Gain;
